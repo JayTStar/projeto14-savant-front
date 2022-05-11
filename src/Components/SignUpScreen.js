@@ -2,13 +2,15 @@ import styled from "styled-components";
 import { useState } from "react";
 
 export default function Signup(){
-    const [name, setName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmation, setConfirmation] = useState("");
 
     const usersInfo = {
-        name: name,
+        firstName: firstName,
+        lastName:lastName,
         email: email,
         password: password,
         confirmation: confirmation
@@ -26,7 +28,8 @@ export default function Signup(){
         <Page>
             <Logo></Logo>
             <Form>
-                <Name placeholder="Nome" onChange={(e) => {setName(e.target.value)}}></Name>
+                <FirstName placeholder="Nome" onChange={(e) => {setFirstName(e.target.value)}}></FirstName>
+                <LastName placeholder="Nome" onChange={(e) => {setLastName(e.target.value)}}></LastName>
                 <Email placeholder="E-mail" onChange={(e) => {setEmail(e.target.value)}}></Email>
                 <Password placeholder="Senha" onChange={(e) => {setPassword(e.target.value)}}></Password>
                 <PasswordComfim placeholder="Confirme a senha" onChange={(e) => {setConfirmation(e.target.value)}}></PasswordComfim>
@@ -45,12 +48,13 @@ const Logo = styled.img`
 const Form = styled.form`
 
 `
-const Name = styled.input`
+const FirstName = styled.input`
 
 `
-const Email = Name;
-const Password = Name;
-const PasswordComfim = Name;
+const LastName = FirstName;
+const Email = FirstName;
+const Password = FirstName;
+const PasswordComfim = FirstName;
 
 const Button = styled.button`
 
