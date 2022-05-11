@@ -6,7 +6,7 @@ export default function Login(){
     const [password, setPassword] = useState("");
 
     function handleClick(){
-        
+
     }
 
     return(
@@ -22,6 +22,9 @@ export default function Login(){
 }
 
 const Page = styled.main`
+
+`
+const Logo = styled.img`
 
 `
 const Form = styled.form`

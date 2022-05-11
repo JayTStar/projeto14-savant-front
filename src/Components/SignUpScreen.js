@@ -39,6 +39,9 @@ export default function Signup(){
 const Page = styled.main`
 
 `
+const Logo = styled.img`
+
+`
 const Form = styled.form`
 
 `
