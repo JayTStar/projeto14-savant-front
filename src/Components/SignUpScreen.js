@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Signup(){
     const [firstName, setFirstName] = useState("");
@@ -13,18 +14,28 @@ export default function Signup(){
         firstName: firstName,
         lastName:lastName,
         email: email,
-        password: password,
-        confirmation: confirmation
+        password: password
     }
 
-    function handleClick(){
+    async function handleClick(){
         if(password !== confirmation){
-            alert("As senhas não batem");
+            alert("As senhas informadas não batem");
         }
         else{
-
+            postUser();
         }
     }
+
+    async function postUser(){
+        try{
+            await axios.post("https://git.heroku.com/savant-e-commerce.git/sign", usersInfo);
+            console.log("Deu bom");
+        } 
+        catch(err){
+            console.log(err)
+        }
+    }
+
     return(
         <Page>
             <Logo></Logo>
@@ -32,8 +43,8 @@ export default function Signup(){
                 <FirstName placeholder="Nome" onChange={(e) => {setFirstName(e.target.value)}}></FirstName>
                 <LastName placeholder="Nome" onChange={(e) => {setLastName(e.target.value)}}></LastName>
                 <Email placeholder="E-mail" onChange={(e) => {setEmail(e.target.value)}}></Email>
-                <Password placeholder="Senha" onChange={(e) => {setPassword(e.target.value)}}></Password>
-                <PasswordComfim placeholder="Confirme a senha" onChange={(e) => {setConfirmation(e.target.value)}}></PasswordComfim>
+                <Password type={"password"} placeholder="Senha" onChange={(e) => {setPassword(e.target.value)}}></Password>
+                <PasswordComfim type={"password"} placeholder="Confirme a senha" onChange={(e) => {setConfirmation(e.target.value)}}></PasswordComfim>
             </Form>
             <Button onClick={handleClick}>Cadastrar</Button>
             <Login to={{pathname:"/login"}}>Já possui conta? Faça o login aqui</Login>
