@@ -1,16 +1,30 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 export default function Signup(){
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmation, setConfirmation] = useState("");
+
+    function handleClick(){
+        if(password !== confirmation){
+            alert("As senhas não batem");
+        }
+        else{
+
+        }
+    }
     return(
         <Page>
             <Logo></Logo>
             <Form>
-                <Name></Name>
-                <Email></Email>
-                <Password></Password>
-                <PasswordComfim></PasswordComfim>
+                <Name placeholder="Nome" onChange={(e) => {setName(e.target.value)}}></Name>
+                <Email placeholder="E-mail" onChange={(e) => {setEmail(e.target.value)}}></Email>
+                <Password placeholder="Senha" onChange={(e) => {setPassword(e.target.value)}}></Password>
+                <PasswordComfim placeholder="Confirme a senha" onChange={(e) => {setConfirmation(e.target.value)}}></PasswordComfim>
             </Form>
-            <Button></Button>
+            <Button onClick={handleClick}>Cadastrar</Button>
         </Page>
     )
 }
