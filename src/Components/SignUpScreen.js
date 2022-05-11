@@ -7,6 +7,13 @@ export default function Signup(){
     const [password, setPassword] = useState("");
     const [confirmation, setConfirmation] = useState("");
 
+    const usersInfo = {
+        name: name,
+        email: email,
+        password: password,
+        confirmation: confirmation
+    }
+
     function handleClick(){
         if(password !== confirmation){
             alert("As senhas não batem");

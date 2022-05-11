@@ -1,14 +1,22 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 export default function Login(){
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    function handleClick(){
+        
+    }
+
     return(
         <Page>
             <Logo></Logo>
             <Form>
-                <Email></Email>
-                <Password></Password>
+                <Email placeholder="E-mail" onChange={(e) => {setEmail(e.target.value)}}></Email>
+                <Password placeholder="Senha" onChange={(e) => {setPassword(e.target.value)}}></Password>
             </Form>
-            <Button></Button>
+            <Button onClick={handleClick}>Login</Button>
         </Page>
     )
 }
