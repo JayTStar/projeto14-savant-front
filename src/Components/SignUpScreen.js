@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import SavantLogo from "../Midia/Savant-logo.png";
 
 export default function Signup(){
     const [firstName, setFirstName] = useState("");
@@ -28,7 +29,7 @@ export default function Signup(){
 
     async function postUser(){
         try{
-            await axios.post("https://git.heroku.com/savant-e-commerce.git/sign", usersInfo);
+            await axios.post("https://git.heroku.com/savant-e-commerce.git/sign-up", usersInfo);
             console.log("Deu bom");
         } 
         catch(err){
@@ -38,7 +39,7 @@ export default function Signup(){
 
     return(
         <Page>
-            <Logo></Logo>
+            <Logo src={SavantLogo}></Logo>
             <Form>
                 <FirstName placeholder="Nome" onChange={(e) => {setFirstName(e.target.value)}}></FirstName>
                 <LastName placeholder="Nome" onChange={(e) => {setLastName(e.target.value)}}></LastName>
@@ -63,7 +64,8 @@ const Page = styled.main`
     justify-content: space-around;
 `
 const Logo = styled.img`
-
+    width: auto;
+    height:20%;
 `
 const Form = styled.form`
     width: 100%;

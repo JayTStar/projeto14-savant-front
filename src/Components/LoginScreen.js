@@ -1,10 +1,16 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import SavantLogo from "../Midia/Savant-logo.png";
 
 export default function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const userInfor = {
+        email: email,
+        password: password
+    }
 
     function handleClick(){
 
@@ -12,7 +18,7 @@ export default function Login(){
 
     return(
         <Page>
-            <Logo></Logo>
+            <Logo src={SavantLogo}></Logo>
             <Form>
                 <Email placeholder="E-mail" onChange={(e) => {setEmail(e.target.value)}}></Email>
                 <Password placeholder="Senha" onChange={(e) => {setPassword(e.target.value)}}></Password>
@@ -34,11 +40,12 @@ const Page = styled.main`
     justify-content: space-around;
 `
 const Logo = styled.img`
-
+    width: auto;
+    height:20%;
 `
 const Form = styled.form`
     width: 100%;
-    height: 30%;
+    height: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,7 +53,7 @@ const Form = styled.form`
 `
 const Email = styled.input`
     width: 60%;
-    height: 20%;
+    height: 30%;
 
     background-color: #C4C4C4;
     border-radius: 5px;
