@@ -1,11 +1,19 @@
+import { useState } from "react";
 import styled from "styled-components";
-import SavantLogo from "../Midia/Savant-logo.svg"
 
-export default function Header(){
-    return(
+import SavantLogo from "../Midia/Savant-logo.svg";
+
+export default function Header() {
+    const [menu, setMenu]  = useState(false);
+
+    return (
         <Head>
+            <Menu menu={menu}>
+
+            </Menu>
+            <DarkScreen menu={menu} onClick={() => setMenu(false)}></DarkScreen>
             <Top>
-                <ion-icon name="menu-outline"></ion-icon>
+                <ion-icon onClick={() => setMenu(true)} name="menu-outline"></ion-icon>
                 <Logo src={SavantLogo}></Logo>
                 <Right>
                     <ion-icon name="person-circle-outline"></ion-icon>
@@ -24,8 +32,11 @@ export default function Header(){
 }
 
 const Head = styled.header`
+    position: fixed;
+    top: 0;
+    z-index: 1;
     width: 100%;
-    height: 15%;
+    height: var(--header-hight);
 `
 const Top = styled.div`
     width: 100%;
@@ -95,3 +106,22 @@ const SearchBar = styled.input`
     width: 80%;
     height: 50%;
 `
+const Menu = styled.aside`
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: ${({menu}) => menu ? "0" : "-70%"};
+    width: 70%;
+    height: 100vh;
+    background-color: green;
+`;
+
+const DarkScreen = styled.div`
+    display: ${({menu}) => menu ? "block" : "none"};
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--dark-screen);
+`;
