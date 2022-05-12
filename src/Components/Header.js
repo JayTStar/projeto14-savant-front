@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SavantLogo from "../Midia/Savant-logo.png"
+import SavantLogo from "../Midia/Savant-logo.svg"
 
 export default function Header(){
     return(
