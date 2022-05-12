@@ -1,16 +1,17 @@
 import styled from "styled-components";
+import SavantLogo from "../Midia/Savant-logo.png"
 
 export default function Header(){
     return(
         <Head>
             <Top>
                 <ion-icon name="menu-outline"></ion-icon>
-                <Logo></Logo>
+                <Logo src={SavantLogo}></Logo>
                 <Right>
                     <ion-icon name="person-circle-outline"></ion-icon>
                     <Cart>
                         <ion-icon name="cart-outline"></ion-icon>
-                        <p>1</p>
+                        <p>2</p>
                     </Cart>
                 </Right>
             </Top>
@@ -44,7 +45,8 @@ const Top = styled.div`
     }
 `
 const Logo = styled.img`
-
+    width: 30%;
+    height: auto;
 `
 const Right = styled.div`
     width:auto;
