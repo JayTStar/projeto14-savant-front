@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default function Header(){
     return(
-        <Header>
+        <Head>
             <Top>
                 <ion-icon name="menu-outline"></ion-icon>
                 <Logo></Logo>
@@ -13,12 +13,13 @@ export default function Header(){
                 <SearchBar></SearchBar>
                 <ion-icon name="search-circle-outline"></ion-icon>
             </Search>
-        </Header>
+        </Head>
     )
 }
 
-const Header = styled.header`
-
+const Head = styled.header`
+    width: 100%;
+    height: 10%;
 `
 const Top = styled.div`
 
