@@ -1,11 +1,18 @@
+import { useState } from "react";
 import styled from "styled-components";
-import SavantLogo from "../Midia/Savant-logo.svg"
 
-export default function Header(){
-    return(
+import SavantLogo from "../Midia/Savant-logo.svg";
+
+import Menu from "./Menu";
+
+export default function Header() {
+    const [menu, setMenu]  = useState(false);
+
+    return (
         <Head>
+            <Menu menu={menu} setMenu={setMenu} />
             <Top>
-                <ion-icon name="menu-outline"></ion-icon>
+                <ion-icon onClick={() => setMenu(true)} name="menu-outline"></ion-icon>
                 <Logo src={SavantLogo}></Logo>
                 <Right>
                     <ion-icon name="person-circle-outline"></ion-icon>
@@ -24,8 +31,11 @@ export default function Header(){
 }
 
 const Head = styled.header`
+    position: fixed;
+    top: 0;
+    z-index: 1;
     width: 100%;
-    height: 15%;
+    height: var(--header-height);
 `
 const Top = styled.div`
     width: 100%;
@@ -42,6 +52,7 @@ const Top = styled.div`
     ion-icon{
         font-size: 30px;
         color: #F2D5C4;
+        cursor: pointer;
     }
 `
 const Logo = styled.img`
