@@ -19,6 +19,6 @@ const Section = styledComponents.section`
 
 const Main = styledComponents.main`
     height: 200px;
-    margin-top: calc(var(--header-hight) + 50px);
+    margin-top: calc(var(--header-height) + 50px);
     background-color: red;
 `;
