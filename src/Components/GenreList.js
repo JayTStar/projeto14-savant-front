@@ -20,9 +20,6 @@ const Section = styledComponents.section`
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 100vw;
-    margin-top: calc(var(--header-height) + 12%);
-    background-color: red;
 `;
 
 const Genre = styledComponents.h2`
@@ -34,7 +31,7 @@ const Genre = styledComponents.h2`
 const List = styledComponents.div`
     overflow: scroll;
     display: flex;
-    height: 220px;
+    height: 350px;
     display: flex;
     padding: 0 5%;
 `;
