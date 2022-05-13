@@ -26,7 +26,7 @@ const Item = styledComponents.article`
     margin-right: 15px;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0px 0.5px 3px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: -2px 2px 3px 1px rgba(0, 0, 0, 0.2);
 `;
 
 const Image = styledComponents.img`

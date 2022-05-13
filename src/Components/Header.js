@@ -97,6 +97,8 @@ const Search = styled.div`
     align-items: center;
     justify-content: space-around;
 
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.4);
+
     ion-icon{
         font-size: 25px;
         color: #064973;
