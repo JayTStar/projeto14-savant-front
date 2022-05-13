@@ -20,7 +20,6 @@ export default function GenreList(){
 const Section = styledComponents.section`
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
 `;
 
 const Genre = styledComponents.h2`
@@ -30,8 +29,11 @@ const Genre = styledComponents.h2`
 `;
 
 const List = styledComponents.div`
-    overflow: scroll;
-    display: flex;
+    overflow-x: scroll;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    width: 100%;
     height: 350px;
     display: flex;
     padding: 0 5%;
@@ -39,6 +41,6 @@ const List = styledComponents.div`
 
 const Partition = styledComponents.div`
     height: 1px;
-    margin: 0 50px 20px 50px;
+    margin: 0 10% 20px 10%;
     border-bottom: 1px solid #8F9DA6;
 `;

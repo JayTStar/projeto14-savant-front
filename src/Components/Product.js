@@ -10,7 +10,7 @@ export default function Product() {
             <Image src={image} />
             <Title>{title}</Title>
             <Author>{author}</Author>
-            <Price>{`R\$ ${price}`}</Price>
+            <Price>{`R$ ${price}`}</Price>
         </Item>
     );
 }
@@ -19,18 +19,18 @@ export default function Product() {
 const Item = styledComponents.article`
     position: relative;
     display: flex;
+    flex-shrink: 0;
     flex-direction: column;
-    align-items: center;
-    width: 140px;
+    width: 150px;
     height: 300px;
     margin-right: 15px;
-    padding: 10px 0;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 0.5px 3px 1px rgba(0, 0, 0, 0.2);
 `;
 
 const Image = styledComponents.img`
-    width: 110px;
+    width: 100%;
     margin-bottom: 5px;
 `;
 
@@ -42,7 +42,6 @@ const Title = styledComponents.h2`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 110px;
     height: 32px;
     margin-bottom: 2px;
 `;
@@ -52,7 +51,6 @@ const Author = styledComponents.p`
     white-space: wrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 110px;
     margin-bottom: 2px;
 `;
 
