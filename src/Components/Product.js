@@ -7,7 +7,7 @@ export default function Product() {
 
     return (
         <Item>
-            <Image src={products[0].image} />
+            <Image src={image} />
             <Title>{title}</Title>
             <Author>{author}</Author>
             <Price>{`R\$ ${price}`}</Price>

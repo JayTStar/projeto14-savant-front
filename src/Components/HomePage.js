@@ -10,6 +10,8 @@ export default function HomePage(){
             <Main>
                 <GenreList />
                 <GenreList />
+                <GenreList />
+                <GenreList />
             </Main>
         </Section>
     );

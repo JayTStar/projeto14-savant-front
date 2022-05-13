@@ -12,6 +12,7 @@ export default function GenreList(){
                 <Product />
                 <Product />
             </List>
+            <Partition />
         </Section>
     );
 }
@@ -34,4 +35,10 @@ const List = styledComponents.div`
     height: 350px;
     display: flex;
     padding: 0 5%;
+`;
+
+const Partition = styledComponents.div`
+    height: 1px;
+    margin: 0 50px 20px 50px;
+    border-bottom: 1px solid #8F9DA6;
 `;
