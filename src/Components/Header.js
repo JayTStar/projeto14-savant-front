@@ -39,7 +39,7 @@ const Head = styled.header`
 `
 const Top = styled.div`
     width: 100%;
-    height: 70%;
+    height: 50px;
     background-color: #064973;
     
     display: flex;
@@ -56,7 +56,7 @@ const Top = styled.div`
     }
 `
 const Logo = styled.img`
-    width: 30%;
+    width: 150px;
     height: auto;
 `
 const Right = styled.div`
@@ -89,7 +89,7 @@ const Cart = styled.div`
 `
 const Search = styled.div`
     width: 100%;
-    height: 30%;
+    height: 30px;
 
     background-color: #C4C4C4;
 
@@ -104,5 +104,5 @@ const Search = styled.div`
 `
 const SearchBar = styled.input`
     width: 80%;
-    height: 50%;
+    height: 60%;
 `

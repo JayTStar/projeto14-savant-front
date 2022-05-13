@@ -1,5 +1,6 @@
 import styledComponents from "styled-components";
 
+import GenreList from "./GenreList";
 import Header from "./Header";
 
 export default function HomePage(){
@@ -7,7 +8,7 @@ export default function HomePage(){
         <Section>
             <Header />
             <Main>
-
+                <GenreList />
             </Main>
         </Section>
     );
@@ -18,7 +19,5 @@ const Section = styledComponents.section`
 `;
 
 const Main = styledComponents.main`
-    height: 200px;
-    margin-top: calc(var(--header-height) + 50px);
-    background-color: red;
+    margin-top: calc(var(--header-height) + 12%);
 `;
