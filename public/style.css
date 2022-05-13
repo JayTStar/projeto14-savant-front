@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+}
+
+.root{
+    --dark-screen: rgba(0, 0, 0, 0.6);
+    --header-height: 15%;
+
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+}
+

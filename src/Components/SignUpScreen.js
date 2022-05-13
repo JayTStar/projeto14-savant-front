@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import SavantLogo from "../Midia/Savant-logo.png";
 
@@ -10,6 +10,8 @@ export default function Signup(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmation, setConfirmation] = useState("");
+
+    const nav = useNavigate();
 
     const usersInfo = {
         firstName: firstName,
@@ -29,8 +31,9 @@ export default function Signup(){
 
     async function postUser(){
         try{
-            await axios.post("https://git.heroku.com/savant-e-commerce.git/sign-up", usersInfo);
+            await axios.post("https://savant-e-commerce.herokuapp.com/sign-up", usersInfo);
             console.log("Deu bom");
+            nav("/login");
         } 
         catch(err){
             console.log(err)
