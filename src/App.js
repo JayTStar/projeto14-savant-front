@@ -7,14 +7,14 @@ import HomePage from "./Components/HomePage";
 
 export default function App(){
     return(
-        <BrowserRouter>
-            <Routes>
-                <Route path="/login" element={<Login/>} />
-                <Route path="/sign-up" element={<Signup/>} />
-                <UserData>
+        <UserData>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/login" element={<Login/>} />
+                    <Route path="/sign-up" element={<Signup/>} />
                     <Route path="/" element={<HomePage />} />
-                </UserData>
-            </Routes>
-        </BrowserRouter>
+                </Routes>
+            </BrowserRouter>
+        </UserData>
     )
 }
