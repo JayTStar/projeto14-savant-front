@@ -2,7 +2,7 @@ import { createContext, useState ,useContext} from "react";
 
 export const UserData = createContext();
 
-export default function UserData({ children }){
+export default function Provider({ children }){
     const [userInfo, setUserInfo] = useState("");
     const [token, setToken] = useState("");
 
