@@ -1,12 +1,25 @@
 import { useState } from "react";
 import styled from "styled-components";
-
 import SavantLogo from "../Midia/Savant-logo.svg";
-
 import Menu from "./Menu";
+import { useToken, useUser } from "./Context";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
     const [menu, setMenu]  = useState(false);
+    const {token} = useToken();
+    const {userInfo} = useUser();
+
+    const nav = useNavigate();
+
+    function handleClick(){
+        if(token === ""){
+            nav("/login");
+        }
+        else{
+            alert(`Logado como ${userInfo.name}`);
+        }
+    }
 
     return (
         <Head>
@@ -15,7 +28,7 @@ export default function Header() {
                 <ion-icon onClick={() => setMenu(true)} name="menu-outline"></ion-icon>
                 <Logo src={SavantLogo}></Logo>
                 <Right>
-                    <ion-icon name="person-circle-outline"></ion-icon>
+                    <ion-icon name="person-circle-outline" onClick={handleClick}></ion-icon>
                     <Cart>
                         <ion-icon name="cart-outline"></ion-icon>
                         <p>2</p>
