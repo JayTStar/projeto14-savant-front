@@ -2,10 +2,13 @@ import styled from "styled-components";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import SavantLogo from "../Midia/Savant-logo.png";
+import { useToken } from "./Context";
 
 export default function Login(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const {token, setToken} = useToken;
 
     const userInfor = {
         email: email,
