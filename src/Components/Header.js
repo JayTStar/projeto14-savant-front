@@ -8,6 +8,10 @@ import Menu from "./Menu";
 export default function Header() {
     const [menu, setMenu]  = useState(false);
 
+    function handleClick(){
+
+    }
+
     return (
         <Head>
             <Menu menu={menu} setMenu={setMenu} />
@@ -15,7 +19,7 @@ export default function Header() {
                 <ion-icon onClick={() => setMenu(true)} name="menu-outline"></ion-icon>
                 <Logo src={SavantLogo}></Logo>
                 <Right>
-                    <ion-icon name="person-circle-outline"></ion-icon>
+                    <ion-icon name="person-circle-outline" onClick={handleClick}></ion-icon>
                     <Cart>
                         <ion-icon name="cart-outline"></ion-icon>
                         <p>2</p>
