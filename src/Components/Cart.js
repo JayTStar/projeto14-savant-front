@@ -21,6 +21,7 @@ export default function Cart(){
                                 <Title>{product.title}</Title>
                                 <Price>R${product.price}</Price>
                             </div>
+                            <ion-icon name="trash-outline"></ion-icon>
                         </Product>
                     )
                 })}
@@ -98,6 +99,26 @@ const Product = styled.div`
     box-sizing: border-box;
     margin: 5px 0;
     padding: 0 10px;
+
+    position: relative;
+
+    ion-icon{
+        color: red;
+
+        font-size: 20px;
+
+        position: absolute;
+        right: 10px;
+    }
+    div{
+        width: 60%;
+        height: 90%;
+
+        display:flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
 `
 const Img = styled.img`
     width: auto;
