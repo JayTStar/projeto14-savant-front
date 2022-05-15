@@ -1,11 +1,9 @@
-import { useState } from "react";
-import axios from "axios";
 import styledComponents from "styled-components";
 
 import Product from "./Product";
 
 export default function GenreList({genre, productsLists}){
-    console.log(productsLists)
+    
     return (
         <Section>
             <Genre>{genre}</Genre>

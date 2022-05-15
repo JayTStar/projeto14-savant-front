@@ -6,27 +6,23 @@ import GenreList from "./GenreList";
 import Header from "./Header";
 
 export default function HomePage() {
-    let URL = "https://savant-e-commerce.herokuapp.com/products";
+    const URL = 'http://localhost:5000/products' //"https://savant-e-commerce.herokuapp.com/products";
     const [productsLists, setProductsLists] = useState([]);;
-    const genres = ["Aventura"]; //, "Ficção", "Terror", "HQs e Mangás"
-    let listGenre = "Avent";
+    const genres = ["Aventura", "Ficção"]; //, "Terror", "HQs e Mangás"
+    let listsFromAPI = [];
 
     useEffect(() => {
-        genres.forEach(genre => {
-            listGenre = genre;
-            const promise = axios.get(URL + "?genre=" + genre.toLowerCase().replace(/ /g, "").replace("ç", "c").replace("á", "a").replace("ã", "a"));
-            promise.then(renderList); promise.catch(warnError);
+        genres.forEach(async genre => {
+            try{
+                const response = await axios.get(URL + "?genre=" + genre.toLowerCase().replace(/ /g, "").replace("ç", "c").replace("á", "a").replace("ã", "a"));
+                listsFromAPI.push([genre, response.data]);                     
+                setProductsLists([...productsLists, listsFromAPI]);
+            }catch(e){
+                console.log(e);
+            }
         })
     }, []);
-
-    function warnError(error) {
-        console.log(error);
-    }
-
-    function renderList(response) {
-        setProductsLists(response.data);
-    }
-
+    
     return (
         <Section>
             <Header />
@@ -34,7 +30,11 @@ export default function HomePage() {
                 {productsLists.length === 0 ?
                     <p>Carregando..</p>
                     :
-                    <GenreList genre={listGenre} productsLists={productsLists} />
+                    <>
+                        {productsLists[0].map((genreList, index) => {
+                            return(<GenreList key={index} genre={genreList[0]} productsLists={genreList[1]} />)
+                        })}
+                    </>
                 }
             </Main>
         </Section>
