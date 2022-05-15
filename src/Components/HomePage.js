@@ -6,9 +6,9 @@ import GenreList from "./GenreList";
 import Header from "./Header";
 
 export default function HomePage() {
-    const URL = "https://savant-e-commerce.herokuapp.com/products" //dev link: 'http://localhost:5000/products';
+    const URL = 'http://localhost:5000/products' //dev link: 'http://localhost:5000/products'; heroku: "https://savant-e-commerce.herokuapp.com/products";
     const [productsLists, setProductsLists] = useState([]);;
-    const genres = ["Aventura", "Ficção"]; //, "Terror", "HQs e Mangás"
+    const genres = ["Aventura", "Ficção", "Autoajuda" , "HQs e Mangás"];
     let listsFromAPI = [];
 
     useEffect(() => {
