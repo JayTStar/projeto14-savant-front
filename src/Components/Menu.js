@@ -48,8 +48,10 @@ const DarkScreen = styled.div`
 `;
 
 const Head = styled.div`
+    display: flex;
+    align-items: center;
     height: var(--header-height);
-    padding: 20px 0 0 20px;
+    padding-left: 20px;
     background-color: #064973;
 `;
 
