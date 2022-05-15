@@ -10,14 +10,21 @@ import Header from "./Header";
 export default function HomePage() {
     const URL = 'http://localhost:5000/products' //dev link: 'http://localhost:5000/products'; heroku: "https://savant-e-commerce.herokuapp.com/products";
     const [productsLists, setProductsLists] = useState([]);
-    const { genres } = useContext(GenrePool);
+    const {genres} = useContext(GenrePool);
+    let listsFromAPI = [];
 
-    useEffect( () => {
-            const promise = axios.get(URL);
-            promise.then((response) => setProductsLists(response.data));
-            promise.catch((e) => console.log(e));
+    useEffect(() => {
+        genres.forEach(async genre => {
+            try{
+                const response = await axios.get(URL + "?genre=" + genre.toLowerCase().replace(/ /g, "").replace("ç", "c").replace("á", "a").replace("ã", "a"));
+                listsFromAPI.push([genre, response.data]);                     
+                setProductsLists([...productsLists, listsFromAPI]);
+            }catch(e){
+                console.log(e);
+            }
+        })
     }, []);
-
+    
     return (
         <Section>
             <Header />
@@ -26,9 +33,8 @@ export default function HomePage() {
                     <p>Carregando..</p>
                     :
                     <>
-                        {genres.map((genre, index) => {
-                            const products = productsLists.filter( products => products.genre === genre);
-                            return(<GenreList key={index} genre={genre} productsLists={products} />)
+                        {productsLists[0].map((genreList, index) => {
+                            return(<GenreList key={index} genre={genreList[0]} productsLists={genreList[1]} />)
                         })}
                     </>
                 }
