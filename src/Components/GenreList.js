@@ -2,14 +2,16 @@ import styledComponents from "styled-components";
 
 import Product from "./Product";
 
-export default function GenreList({genre, productsLists}){
-    
+export default function GenreList({ genre, productsLists }) {
+
     return (
         <Section>
             <Genre>{genre}</Genre>
-            <List>{productsLists.map((product, index) => {
-                return (<Product key={index} product={product} />)
-            })}</List>
+            <List>
+                {productsLists.map((product, index) => {
+                    return (<Product key={index} product={product} />)
+                })}
+            </List>
             <Partition />
         </Section>
     );

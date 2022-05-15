@@ -9,6 +9,11 @@ export default function Menu({ menu, setMenu }) {
     const {genres} = useContext(GenrePool)
     genres.sort();
 
+    function handleClick(genreURL){
+        setMenu(false);
+        navigate(`/${genreURL}`);
+    }
+
     return (
         <>
             <Aside menu={menu}>
@@ -16,8 +21,8 @@ export default function Menu({ menu, setMenu }) {
                     <ExitIcon onClick={() => setMenu(false)}>x</ExitIcon>
                 </Head>
                 {genres.map( (genre, index) => {
-                    const genreURL = genre.toLowerCase().replaceAll("ç", "c").replaceAll("á", "a").replaceAll("ã", "a").replaceAll(" ", "%20");
-                    return <Genre onClick={() => navigate(`/${genreURL}`)} key={index}>{genre}</Genre>
+                    const genreURL = genre.toLowerCase().replaceAll("ç", "c").replaceAll("á", "a").replaceAll("ã", "a").replaceAll(" ", "");
+                    return <Genre onClick={() => handleClick(genreURL)} key={index}>{genre}</Genre>
                 })}
             </Aside>
             <DarkScreen menu={menu} onClick={() => setMenu(false)}></DarkScreen>
