@@ -1,32 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import styledComponents from "styled-components";
+
+import { GenrePool } from "../contexts/GenresContext";
 
 import GenreList from "./GenreList";
 import Header from "./Header";
 
 export default function HomePage() {
-    const URL = 'https://savant-e-commerce.herokuapp.com/products' //dev link: 'http://localhost:5000/products'; heroku: "https://savant-e-commerce.herokuapp.com/products";
-    const [productsLists, setProductsLists] = useState([]);;
-    const genres = ["Aventura", "Ficção", "Autoajuda" , "HQs e Mangás"];
-    let listsFromAPI = [];
+    const URL = "https://savant-e-commerce.herokuapp.com/products"; //dev link: 'http://localhost:5000/products'; heroku: "https://savant-e-commerce.herokuapp.com/products";
+    const [productsLists, setProductsLists] = useState([]);
+    const { genres } = useContext(GenrePool);
+    genres.sort(comparator);
 
-    useEffect(() => {
-        genres.forEach(async genre => {
-            try{
-                const response = await axios.get(URL + "?genre=" + genre.toLowerCase().replace(/ /g, "").replace("ç", "c").replace("á", "a").replace("ã", "a"));
-                listsFromAPI.push([genre, response.data]);                     
-                setProductsLists(listsFromAPI);
+    function comparator() {
+        return Math.random() - 0.5;
+    }
 
-                console.log(listsFromAPI);
-                console.log(productsLists);
-            }catch(e){
-                console.log(e);
-            }
-        })
-
+    useEffect( () => {
+            const promise = axios.get(URL);
+            promise.then((response) => setProductsLists(response.data));
+            promise.catch((e) => console.log(e));
     }, []);
-    
+
     return (
         <Section>
             <Header />
@@ -35,8 +31,10 @@ export default function HomePage() {
                     <p>Carregando..</p>
                     :
                     <>
-                        {productsLists.map((genreList, index) => {
-                            return(<GenreList key={index} genre={genreList[0]} productsLists={genreList[1]} />)
+                        {genres.map((genre, index) => {
+                            const products = productsLists.filter( products => products.genre === genre);
+                            products.sort(comparator);
+                            return(<GenreList key={index} genre={genre} productsLists={products} />)
                         })}
                     </>
                 }
