@@ -8,9 +8,14 @@ import GenreList from "./GenreList";
 import Header from "./Header";
 
 export default function HomePage() {
-    const URL = 'http://localhost:5000/products'; //dev link: 'http://localhost:5000/products'; heroku: "https://savant-e-commerce.herokuapp.com/products";
+    const URL = "https://savant-e-commerce.herokuapp.com/products"; //dev link: 'http://localhost:5000/products'; heroku: "https://savant-e-commerce.herokuapp.com/products";
     const [productsLists, setProductsLists] = useState([]);
     const { genres } = useContext(GenrePool);
+    genres.sort(comparator);
+
+    function comparator() {
+        return Math.random() - 0.5;
+    }
 
     useEffect( () => {
             const promise = axios.get(URL);
@@ -28,6 +33,7 @@ export default function HomePage() {
                     <>
                         {genres.map((genre, index) => {
                             const products = productsLists.filter( products => products.genre === genre);
+                            products.sort(comparator);
                             return(<GenreList key={index} genre={genre} productsLists={products} />)
                         })}
                     </>
