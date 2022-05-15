@@ -6,7 +6,7 @@ import GenreList from "./GenreList";
 import Header from "./Header";
 
 export default function HomePage() {
-    const URL = 'http://localhost:5000/products' //dev link: 'http://localhost:5000/products'; heroku: "https://savant-e-commerce.herokuapp.com/products";
+    const URL = 'https://savant-e-commerce.herokuapp.com/products' //dev link: 'http://localhost:5000/products'; heroku: "https://savant-e-commerce.herokuapp.com/products";
     const [productsLists, setProductsLists] = useState([]);;
     const genres = ["Aventura", "Ficção", "Autoajuda" , "HQs e Mangás"];
     let listsFromAPI = [];
@@ -17,6 +17,8 @@ export default function HomePage() {
                 const response = await axios.get(URL + "?genre=" + genre.toLowerCase().replace(/ /g, "").replace("ç", "c").replace("á", "a").replace("ã", "a"));
                 listsFromAPI.push([genre, response.data]);                     
                 setProductsLists([...productsLists, listsFromAPI]);
+
+                console.log(listsFromAPI);
             }catch(e){
                 console.log(e);
             }
