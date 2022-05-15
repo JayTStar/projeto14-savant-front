@@ -16,13 +16,15 @@ export default function HomePage() {
             try{
                 const response = await axios.get(URL + "?genre=" + genre.toLowerCase().replace(/ /g, "").replace("ç", "c").replace("á", "a").replace("ã", "a"));
                 listsFromAPI.push([genre, response.data]);                     
-                setProductsLists([...productsLists, listsFromAPI]);
+                setProductsLists(listsFromAPI);
 
                 console.log(listsFromAPI);
+                console.log(productsLists);
             }catch(e){
                 console.log(e);
             }
         })
+
     }, []);
     
     return (
@@ -33,7 +35,7 @@ export default function HomePage() {
                     <p>Carregando..</p>
                     :
                     <>
-                        {productsLists[0].map((genreList, index) => {
+                        {productsLists.map((genreList, index) => {
                             return(<GenreList key={index} genre={genreList[0]} productsLists={genreList[1]} />)
                         })}
                     </>
