@@ -1,8 +1,6 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import styledComponents from "styled-components";
-
-import { GenrePool } from "../contexts/GenresContext";
 
 import Header from "./Header";
 import Product from "./Product";
@@ -10,7 +8,6 @@ import Product from "./Product";
 export default function GenrePage({ genreURL, genre }) {
     const URL = 'http://localhost:5000/products'; //dev link: 'http://localhost:5000/products'; heroku: "https://savant-e-commerce.herokuapp.com/products";
     const [productsLists, setProductsLists] = useState([]);
-    const { genres } = useContext(GenrePool);
         
     function comparator() {
         return Math.random() - 0.5;
@@ -20,7 +17,7 @@ export default function GenrePage({ genreURL, genre }) {
         const promise = axios.get(`${URL}?genre=${genreURL}`);
         promise.then((response) => setProductsLists(response.data));
         promise.catch((e) => console.log(e));
-    }, []);
+    }, [genre]);
     
     productsLists.sort(comparator);
 
