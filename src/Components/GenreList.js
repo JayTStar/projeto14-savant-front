@@ -1,17 +1,17 @@
+import { useState } from "react";
+import axios from "axios";
 import styledComponents from "styled-components";
 
 import Product from "./Product";
 
-export default function GenreList(){
+export default function GenreList({genre, productsLists}){
+    console.log(productsLists)
     return (
         <Section>
-            <Genre>Aventura</Genre>
-            <List>
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-            </List>
+            <Genre>{genre}</Genre>
+            <List>{productsLists.map((product, index) => {
+                return (<Product key={index} product={product} />)
+            })}</List>
             <Partition />
         </Section>
     );

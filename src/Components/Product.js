@@ -1,9 +1,7 @@
 import styledComponents from "styled-components";
 
-import products from "./dev.js" //EXCLUIR DEPOIS!!!!
-
-export default function Product() {
-    const { image, title, price, author } = products[0];
+export default function Product({product}) {
+    const { image, title, price, author } = product;
 
     return (
         <Item>
