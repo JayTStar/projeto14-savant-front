@@ -16,7 +16,7 @@ export default function Menu({ menu, setMenu }) {
                     <ExitIcon onClick={() => setMenu(false)}>x</ExitIcon>
                 </Head>
                 {genres.map( (genre, index) => {
-                    const genreURL = genre.toLowerCase().replaceAll("ç", "c").replaceAll("á", "a").replaceAll("ã", "a").replaceAll(" ", "%20");
+                    const genreURL = genre.toLowerCase().replaceAll("ç", "c").replaceAll("á", "a").replaceAll("ã", "a").replaceAll(" ", "");
                     return <Genre onClick={() => navigate(`/${genreURL}`)} key={index}>{genre}</Genre>
                 })}
             </Aside>

@@ -28,11 +28,11 @@ export default function HomePage() {
             <Header />
             <Main>
                 {productsLists.length === 0 ?
-                    <p>Carregando..</p>
+                    <p>Carregando...</p>
                     :
                     <>
                         {genres.map((genre, index) => {
-                            const products = productsLists.filter( products => products.genre === genre);
+                            const products = productsLists.filter(products => products.genre === genre);
                             products.sort(comparator);
                             return(<GenreList key={index} genre={genre} productsLists={products} />)
                         })}
