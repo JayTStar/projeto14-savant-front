@@ -1,10 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import styledComponents from "styled-components";
 
-export default function Product({product}) {
-    const { image, title, price, author } = product;
+export default function Product({ product }) {
+    const { image, title, price, author, _id } = product;
+    let { productId } = product;
+    const navigate = useNavigate();
+    if (!productId) {
+        productId = _id;
+    }
 
     return (
-        <Item>
+        <Item onClick={() => navigate(`/${productId}`)}>
             <Image src={image} />
             <Title>{title}</Title>
             <Author>{author}</Author>
