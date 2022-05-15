@@ -1,16 +1,21 @@
+import { useContext } from "react";
 import styled from "styled-components";
 
+import { GenrePool } from "../contexts/GenresContext";
+
 export default function Menu({ menu, setMenu }) {
+    const {genres} = useContext(GenrePool)
+    genres.sort();
+
     return (
         <>
             <Aside menu={menu}>
                 <Head>
                     <ExitIcon onClick={() => setMenu(false)}>x</ExitIcon>
                 </Head>
-                <div className="genre">Aventura</div>
-                <div className="genre">Ficção</div>
-                <div className="genre">Terror</div>
-                <div className="genre">HQs e Mangás</div>
+                {genres.map( (genre, index) => {
+                    return <Genre key={index}>{genre}</Genre>
+                })}
             </Aside>
             <DarkScreen menu={menu} onClick={() => setMenu(false)}></DarkScreen>
         </>
@@ -25,17 +30,17 @@ const Aside = styled.aside`
     width: 70%;
     height: 100vh;
     background-color: white;
-
-    .genre{
-        display: flex;
-        align-items: center;
-        height: 60px;
-        padding-left: 15px;
-        border-bottom: 1px solid #064973;
-        color: #064973;
-        cursor: pointer;
-    }
 `;
+
+const Genre = styled.div`
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding-left: 15px;
+    border-bottom: 1px solid #064973;
+    color: #064973;
+    cursor: pointer;
+`
 
 const DarkScreen = styled.div`
     display: ${({ menu }) => menu ? "block" : "none"};
