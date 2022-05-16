@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Logo from "../Midia/Savant-logo.svg"
 import {useState, useEffect} from "react"
-import { useCart } from "./Context";
+import { useCart } from "../contexts/UserContext";
 
 export default function Checkout(){
     const [state,setState] = useState(false);
