@@ -18,7 +18,7 @@ export default function Menu({ menu, setMenu }) {
         <>
             <Aside menu={menu}>
                 <Head>
-                    <ExitIcon onClick={() => setMenu(false)}>x</ExitIcon>
+                    <ion-icon onClick={() => setMenu(false)} name="close-outline"></ion-icon>
                 </Head>
                 {genres.map( (genre, index) => {
                     const genreURL = genre.toLowerCase().replaceAll("ç", "c").replaceAll("á", "a").replaceAll("ã", "a").replaceAll(" ", "");
@@ -66,11 +66,11 @@ const Head = styled.div`
     height: var(--header-height);
     padding-left: 20px;
     background-color: #064973;
-`;
-
-const ExitIcon = styled.p`
-    font-size: 20px;
-    width: 20px;
-    color: #F2D5C4;
-    cursor: pointer;
+    
+    ion-icon{
+        font-size: 20px;
+        width: 20px;
+        color: #F2D5C4;
+        cursor: pointer;
+    };
 `;
