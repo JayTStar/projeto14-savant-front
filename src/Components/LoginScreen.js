@@ -38,7 +38,7 @@ export default function Login() {
         catch (err) {
             console.log(err);
 
-            if(err.status === 401 && err.status === 422){
+            if(err.status === 401 || err.status === 422){
                 alert("Usuário ou senha errados");
             }
         }
