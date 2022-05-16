@@ -25,7 +25,7 @@ export default function Cart(){
     return(
         <Page>
             <Top>
-                <ion-icon name="close-circle-outline" onClick={() => {nav("/")}}></ion-icon>
+                <ion-icon onClick={() => {nav("/")}} name="close-outline"></ion-icon>
                 <p>Carrinho</p>
             </Top>
             <Items>
@@ -43,7 +43,7 @@ export default function Cart(){
                     )
                 })}
             </Items>
-            <Total> <p>Total:</p> <p>R$:{parseFloat(total).toFixed(2).replace(".", ",")}</p></Total>
+            <Total> <p>Total:</p> <p>R$ {parseFloat(total).toFixed(2).replace(".", ",")}</p></Total>
             <button onClick={() => {nav("/checkout")}}>Finalizar Compra</button>
         </Page>
     )
@@ -59,11 +59,12 @@ const Page = styled.main`
     button{
         width: 50%;
         height: 50px;
-        background: #49728C;
+        background: #064973;
         border: none;
+        border-radius: 5px;
 
         font-weight: 400;
-        font-size: 20px;
+        font-size: 18px;
         line-height: 29px;
 
         color: #C4C4C4;
@@ -73,7 +74,7 @@ const Page = styled.main`
 `
 const Top = styled.header`
     width: 100%;
-    height: 70px;
+    height: var(--header-height);
     background-color: #064973;
 
     display: flex;
@@ -93,7 +94,7 @@ const Top = styled.header`
 
     p{
         color: #F2D5C4;
-        font-size: 30px;
+        font-size: 24px;
     }
 `
 const Items = styled.ul`
@@ -144,7 +145,11 @@ const Img = styled.img`
 const Title = styled.p`
     width: 100%;
 
-    overflow-x: hidden;
+    font-weight: bold;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     text-overflow: ellipsis;
 
     margin: 5px 0;
