@@ -64,7 +64,7 @@ export default function Checkout(){
             if(req.status === 201){
                 alert("Pedido realizado");
 
-                nav("/")
+                nav("/");
             }
         }
         catch(err){
