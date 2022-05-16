@@ -68,6 +68,7 @@ const Page = styled.main`
 `
 const Logo = styled.img`
     height:16%;
+    margin-bottom: 2%;
 `
 const Form = styled.form`
     width: 100%;

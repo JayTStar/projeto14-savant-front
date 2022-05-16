@@ -47,13 +47,16 @@ const Title = styledComponents.h2`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 32px;
+    height: 33px;
     margin-bottom: 2px;
 `;
 
 const Author = styledComponents.p`
     font-size: 14px;
     white-space: wrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 2px;
