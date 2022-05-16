@@ -33,7 +33,6 @@ export default function Login() {
                 name: userName
             })
 
-
             nav("/");
         }
         catch (err) {
@@ -42,7 +41,7 @@ export default function Login() {
     }
 
     function uspdateStatus(token, userId) {
-        axios.post("http://localhost:5000/status", { userId }, {
+        axios.post("https://savant-e-commerce.herokuapp.com/status", { userId }, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
