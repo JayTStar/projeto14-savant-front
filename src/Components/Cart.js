@@ -19,7 +19,7 @@ export default function Cart(){
         const deletedItem = myCart.splice(index, 1);
         console.log(myCart);
 
-        setCart(myCart);
+        setCart([...myCart]);
     }
 
     return(
@@ -98,6 +98,7 @@ const Items = styled.ul`
     height: 500px;
 
     overflow-y: scroll;
+
 `
 const Product = styled.div`
     width:100%;

@@ -27,7 +27,7 @@ export default function Header() {
             <Menu menu={menu} setMenu={setMenu} />
             <Top>
                 <ion-icon onClick={() => setMenu(true)} name="menu-outline"></ion-icon>
-                <Logo src={SavantLogo}></Logo>
+                <Logo src={SavantLogo} onClick={() => {nav("/")}}></Logo>
                 <Right>
                     <ion-icon name="person-circle-outline" onClick={handleClick}></ion-icon>
                     <Cart>
