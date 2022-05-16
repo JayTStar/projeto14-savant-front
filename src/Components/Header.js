@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 import { useToken, useUser, useCart } from "../contexts/UserContext";
 
@@ -12,6 +13,8 @@ export default function Header() {
     const {token} = useToken();
     const {userInfo} = useUser();
     const {cart} = useCart();
+    const [searchInput, setSearchInput] = useState("");
+    const URL = "https://savant-e-commerce.herokuapp.com/products";
 
     const nav = useNavigate();
 
@@ -21,6 +24,17 @@ export default function Header() {
         }
         else{
             alert(`Logado como ${userInfo.name}`);
+        }
+    }
+
+    async function search(title){
+        try{
+            const produto = await axios.get(`${URL}?title=${title}`);
+            console.log(produto.data)
+            nav(`/${produto._id}`)
+        }
+        catch(err){
+            console.log(err)
         }
     }
 
@@ -39,8 +53,8 @@ export default function Header() {
                 </Right>
             </Top>
             <Search>
-                <SearchBar></SearchBar>
-                <ion-icon name="search-circle-outline"></ion-icon>
+                <SearchBar placeholder="Pesquisar" onChange={(e) => {setSearchInput(e.target.value)}}></SearchBar>
+                <ion-icon name="search-circle-outline" onClick={() => {search(searchInput)}}></ion-icon>
             </Search>
         </Head>
     )
