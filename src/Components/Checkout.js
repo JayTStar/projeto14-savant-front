@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Logo from "../Midia/Savant-logo.svg"
 import {useState} from "react"
-import { useCart } from "../contexts/UserContext";
+import { useCart, useUser } from "../contexts/UserContext";
 
 export default function Checkout(){
     const [firstName, setFirstName] = useState("");
@@ -20,16 +20,19 @@ export default function Checkout(){
     const [cardName, setCardName] = useState("");
     const [valid, setValid] = useState("");
     const [CVV, setCVV] = useState("");
+    const [installment, setInstallment] = useState("");
 
     const lastFour = cardNumber.substr(cardNumber.length - 4);
 
     const {cart} = useCart();
+    const {user} = useUser();
 
     let totalPrice = 0;
 
     cart.map(product => {totalPrice += parseFloat(product.price)});
 
     const orderInfo ={
+        userID: user.id,
         items: cart,
         total: totalPrice,
         deliverTo: `${firstName} ${lastName}`,
@@ -43,7 +46,8 @@ export default function Checkout(){
         state: state,
 
         paymentMethod: "card",
-        card: lastFour
+        card: lastFour,
+        installment: installment
     }
 
     function postOrder(){
@@ -55,7 +59,7 @@ export default function Checkout(){
             <header> <img src={Logo}/></header>
 
             <CartData>
-
+                <p>Qtd: {cart.length}</p> <p>Total: {totalPrice.toFixed(2)}</p>
             </CartData>
 
             <ShippingInfo>
@@ -114,6 +118,18 @@ export default function Checkout(){
                     <input placeholder="Nome no Cartão" onChange={(e) => {setCardName(e.target.value)}}/>
                     <input placeholder="Vencimento" onChange={(e) => {setValid(e.target.value)}}/>
                     <input placeholder="CVV" onChange={(e) => {setCVV(e.target.value)}}/>
+                    <select onChange={(e) => {setInstallment(e.target.value)}}>
+                        <option value={(totalPrice).toFixed(2)}>1X de {(totalPrice).toFixed(2)}</option>
+                        <option value={(totalPrice/2).toFixed(2)}>2X de {(totalPrice/2).toFixed(2)}</option>
+                        <option value={(totalPrice/3).toFixed(2)}>3X de {(totalPrice/3).toFixed(2)}</option>
+                        <option value={(totalPrice/4).toFixed(2)}>4X de {(totalPrice/4).toFixed(2)}</option>
+                        <option value={(totalPrice/5).toFixed(2)}>5X de {(totalPrice/5).toFixed(2)}</option>
+                        <option value={(totalPrice/6).toFixed(2)}>6X de {(totalPrice/6).toFixed(2)}</option>
+                        <option value={(totalPrice/7).toFixed(2)}>7X de {(totalPrice/7).toFixed(2)}</option>
+                        <option value={(totalPrice/8).toFixed(2)}>8X de {(totalPrice/8).toFixed(2)}</option>
+                        <option value={(totalPrice/9).toFixed(2)}>9X de {(totalPrice/9).toFixed(2)}</option>
+                        <option value={(totalPrice/10).toFixed(2)}>10X de {(totalPrice/10).toFixed(2)}</option>
+                    </select>
                 </form>
             </Payment>
             <button onClick={postOrder}>Finalizar</button>
@@ -154,6 +170,8 @@ const Page = styled.main`
 
         border-radius: 10px;
         border: 2px solid #C4C4C4;
+
+        color: #064973;
     }
 
     select{
@@ -165,7 +183,9 @@ const Page = styled.main`
         border-radius: 10px;
         border: 2px solid #C4C4C4;
 
-        background-color: #FFFFFF
+        background-color: #FFFFFF;
+
+        color:#064973;
     }
 
     section{
@@ -187,7 +207,14 @@ const Page = styled.main`
     }
 `
 const CartData = styled.div`
+    width: 100%;
+    height: 50px;
 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px;
 `
 const ShippingInfo = styled.section`
     width: 100%;
