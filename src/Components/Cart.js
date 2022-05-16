@@ -124,6 +124,9 @@ const Product = styled.div`
 
     position: relative;
 
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+
     ion-icon{
         color: #064973;
 
@@ -136,6 +139,9 @@ const Product = styled.div`
         width: 60%;
         height: 90%;
         margin: 5px;
+
+        overflow-x: hidden;
+        text-overflow: ellipsis;
     }
 `
 const Img = styled.img`

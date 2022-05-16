@@ -6,6 +6,7 @@ import GenrePool from "./contexts/GenresContext";
 import Signup from "./Components/SignUpScreen";
 import Login from "./Components/LoginScreen";
 import Cart from "./Components/Cart";
+import Checkout from "./Components/Checkout";
 
 import HomePage from "./Components/HomePage";
 import GenrePage from "./Components/GenrePage";
@@ -23,6 +24,7 @@ export default function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/sign-up" element={<Signup />} />
                     <Route path="/cart" element={<Cart />} />
+                    <Route path="/checkout" element={<Checkout />} />
                     <Route path="/:productId" element={<ProductPage />} />
                     {genres.map((genre, index) => {
                         const genreURL = genre.toLowerCase().replaceAll("ç", "c").replaceAll("á", "a").replaceAll("ã", "a").replaceAll(" ", "");
