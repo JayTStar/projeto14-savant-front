@@ -2,8 +2,11 @@ import styled from "styled-components";
 import Logo from "../Midia/Savant-logo.svg"
 import {useState} from "react"
 import { useCart, useUser } from "../contexts/UserContext";
+import axios from "axios";
 
 export default function Checkout(){
+    const URL = "https://savant-e-commerce.herokuapp.com/orders"
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [phone, setPhone] = useState("");
@@ -50,8 +53,21 @@ export default function Checkout(){
         installment: installment
     }
 
-    function postOrder(){
+    async function postOrder(){
         console.log(orderInfo);
+        
+        try{
+            const req = await axios.post(URL, orderInfo);
+
+            if(req.status === 201){
+                alert("Pedido realizado");
+
+                nav("/")
+            }
+        }
+        catch(err){
+            console.log(err);
+        }
     }
 
     return(
