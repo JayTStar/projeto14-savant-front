@@ -11,6 +11,7 @@ export default function ProductPage() {
     const { productId } = useParams();
     const URL = `https://savant-e-commerce.herokuapp.com/products?productId=${productId}`; //dev link: `http://localhost:5000/products?productId=${productId}`; heroku: `https://savant-e-commerce.herokuapp.com/products?productId=${productId}`;
     const [product, setProduct] = useState(null);
+    const [added, setAdded] = useState(false);
     const navigate = useNavigate();
 
     const{cart, setCart} = useCart();
@@ -25,6 +26,8 @@ export default function ProductPage() {
 
     function addCart(product){
         setCart([...cart, product])
+
+        setAdded(true);
     }
 
     return (
@@ -43,7 +46,7 @@ export default function ProductPage() {
                         <Author>{`Autor: ${product.author}`}</Author>
                         <Price>{`R$ ${product.price}`}</Price>
                         <Synopsis>{`Sinopse: ${product.synopsis}`}</Synopsis>
-                        <Button onClick={() => {addCart(product)}}>Adicionar ao carrinho</Button>
+                        <Button onClick={(added === false)? () => {addCart(product)} : {}} >{(added === false)? "Adicionar ao carrinho" : "Produto adicionado"}</Button>
                     </>
                 }
             </Main>
