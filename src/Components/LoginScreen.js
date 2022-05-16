@@ -22,8 +22,6 @@ export default function Login() {
     async function handleClick() {
         try {
             const req = await axios.post("https://savant-e-commerce.herokuapp.com/sign-in", loginInfo);
-
-            console.log(req)
             const { token, userId, userName } = req.data;
 
             setInterval(() => uspdateStatus(token, userId), 5000);
@@ -55,8 +53,8 @@ export default function Login() {
         <Page>
             <Logo onClick={() => { nav("/") }} src={SavantLogo}></Logo>
             <Form>
-                <Email placeholder="E-mail" onChange={(e) => { setEmail(e.target.value) }}></Email>
-                <Password placeholder="Senha" onChange={(e) => { setPassword(e.target.value) }}></Password>
+                <Email type="email" placeholder="E-mail" onChange={(e) => {setEmail(e.target.value)}}></Email>
+                <Password type="password" placeholder="Senha" onChange={(e) => {setPassword(e.target.value)}}></Password>
             </Form>
             <Button onClick={handleClick}>Login</Button>
             <Signup to={{ pathname: "/sign-up" }}>Não tem conta? Cadastre-se aqui</Signup>
