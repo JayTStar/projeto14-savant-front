@@ -5,9 +5,10 @@ export const UserData = createContext();
 export default function Provider({ children }){
     const [userInfo, setUserInfo] = useState("");
     const [token, setToken] = useState("");
+    const [cart, setCart] = useState([]);
 
     return(
-        <UserData.Provider value={{userInfo, setUserInfo, token, setToken}}>
+        <UserData.Provider value={{userInfo, setUserInfo, token, setToken, cart, setCart}}>
             {children}
         </UserData.Provider>
     )
@@ -25,4 +26,11 @@ export function useToken(){
     const {token, setToken} = userToken;
 
     return {token, setToken};
+}
+
+export function useCart(){
+    const userCart = useContext(UserData);
+    const {cart, setCart} = userCart;
+
+    return {cart, setCart}
 }

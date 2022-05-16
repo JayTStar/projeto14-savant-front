@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
 
-import { useToken, useUser } from "../contexts/UserContext";
+import { useToken, useUser, useCart } from "../contexts/UserContext";
 
 import SavantLogo from "../Midia/Savant-logo.svg";
 import Menu from "./Menu";
@@ -11,6 +11,7 @@ export default function Header() {
     const [menu, setMenu] = useState(false);
     const {token} = useToken();
     const {userInfo} = useUser();
+    const {cart} = useCart();
 
     const nav = useNavigate();
 
@@ -28,12 +29,12 @@ export default function Header() {
             <Menu menu={menu} setMenu={setMenu} />
             <Top>
                 <ion-icon onClick={() => setMenu(true)} name="menu-outline"></ion-icon>
-                <Logo src={SavantLogo}></Logo>
+                <Logo src={SavantLogo} onClick={() => {nav("/")}}></Logo>
                 <Right>
                     <ion-icon name="person-circle-outline" onClick={handleClick}></ion-icon>
                     <Cart>
-                        <ion-icon name="cart-outline"></ion-icon>
-                        <p>2</p>
+                        <ion-icon name="cart-outline" onClick={() => {nav("/cart")}}></ion-icon>
+                        <p>{cart.length}</p>
                     </Cart>
                 </Right>
             </Top>
