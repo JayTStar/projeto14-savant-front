@@ -23,8 +23,8 @@ export default function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/cart" element={<Cart />} />
                     {genres.map((genre, index) => {
-                        const genreURL = genre.toLowerCase().replaceAll("ç", "c").replaceAll("á", "a").replaceAll("ã", "a").replaceAll(" ", "%20");
-                        return <Route key={index} path={`/${genreURL}`} element={<GenrePage genre={genre} />} />
+                        const genreURL = genre.toLowerCase().replaceAll("ç", "c").replaceAll("á", "a").replaceAll("ã", "a").replaceAll(" ", "");
+                        return <Route key={index} path={`/${genreURL}`} element={<GenrePage genreURL={genreURL} genre={genre} />} />
                     })}
                 </Routes>
             </BrowserRouter>

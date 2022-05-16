@@ -1,12 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
+
+import { useToken, useUser } from "../contexts/UserContext";
+
 import SavantLogo from "../Midia/Savant-logo.svg";
 import Menu from "./Menu";
 import { useToken, useUser, useCart } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-    const [menu, setMenu]  = useState(false);
+    const [menu, setMenu] = useState(false);
     const {token} = useToken();
     const {userInfo} = useUser();
     const {cart} = useCart();
