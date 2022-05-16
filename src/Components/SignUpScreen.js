@@ -45,7 +45,7 @@ export default function Signup(){
             <Logo src={SavantLogo}></Logo>
             <Form>
                 <FirstName placeholder="Nome" onChange={(e) => {setFirstName(e.target.value)}}></FirstName>
-                <LastName placeholder="Nome" onChange={(e) => {setLastName(e.target.value)}}></LastName>
+                <LastName placeholder="Sobrenome" onChange={(e) => {setLastName(e.target.value)}}></LastName>
                 <Email placeholder="E-mail" onChange={(e) => {setEmail(e.target.value)}}></Email>
                 <Password type={"password"} placeholder="Senha" onChange={(e) => {setPassword(e.target.value)}}></Password>
                 <PasswordComfim type={"password"} placeholder="Confirme a senha" onChange={(e) => {setConfirmation(e.target.value)}}></PasswordComfim>
@@ -57,35 +57,36 @@ export default function Signup(){
 }
 
 const Page = styled.main`
-    width:100%;
-    height: 100%;
+    width:100vw;
+    height: 100vh;
     background: #064973;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 `
 const Logo = styled.img`
-    width: auto;
-    height:20%;
+    height:16%;
 `
 const Form = styled.form`
     width: 100%;
-    height: 40%;
+    height: 35%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    margin-bottom: 5%;
 `
 const FirstName = styled.input`
     width: 60%;
-    height: 15%;
+    height: 30%;
 
     background-color: #C4C4C4;
     border-radius: 5px;
 
     border: none;
+    margin-bottom: 2%;
 `
 const LastName = FirstName;
 const Email = FirstName;
@@ -93,16 +94,19 @@ const Password = FirstName;
 const PasswordComfim = FirstName;
 
 const Button = styled.button`
-    width: 50%;
-    height: 10%;
+    width: 40%;
+    height: 7%;
     background: #49728C;
     border: none;
+    border-radius: 5px;
 
     font-weight: 400;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 29px;
 
     color: #C4C4C4;
+
+    margin-bottom: 20%;
 `
 const Login = styled(Link)`
     font-weight: 400;

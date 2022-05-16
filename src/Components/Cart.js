@@ -110,7 +110,7 @@ const Items = styled.ul`
 `
 const Product = styled.div`
     width: 90%;
-    height: 70px;
+    height: 80px;
 
     display:flex;
     align-items: center;
@@ -124,8 +124,7 @@ const Product = styled.div`
 
     position: relative;
 
-    overflow-x: hidden;
-    text-overflow: ellipsis;
+    overflow: hidden;
 
     ion-icon{
         color: #064973;
