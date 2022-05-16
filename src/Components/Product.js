@@ -5,6 +5,7 @@ export default function Product({ product }) {
     const { image, title, price, author, _id } = product;
     let { productId } = product;
     const navigate = useNavigate();
+    
     if (!productId) {
         productId = _id;
     }

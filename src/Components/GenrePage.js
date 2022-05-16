@@ -6,7 +6,7 @@ import Header from "./Header";
 import Product from "./Product";
 
 export default function GenrePage({ genreURL, genre }) {
-    const URL = 'http://localhost:5000/products'; //dev link: 'http://localhost:5000/products'; heroku: "https://savant-e-commerce.herokuapp.com/products";
+    const URL = "https://savant-e-commerce.herokuapp.com/products"; //dev link: 'http://localhost:5000/products'; heroku: "https://savant-e-commerce.herokuapp.com/products";
     const [productsLists, setProductsLists] = useState([]);
         
     function comparator() {
