@@ -46,7 +46,7 @@ export default function ProductPage() {
                         <Author>{`Autor: ${product.author}`}</Author>
                         <Price>{`R$ ${product.price}`}</Price>
                         <Synopsis>{`Sinopse: ${product.synopsis}`}</Synopsis>
-                        <Button onClick={(added === false)? () => {addCart(product)} : {}} >{(added === false)? "Adicionar ao carrinho" : "Produto adicionado"}</Button>
+                        <Button onClick={(added === false)? () => {addCart(product)} : () => {alert("Produto já adicionado")}} >{(added === false)? "Adicionar ao carrinho" : "Produto adicionado"}</Button>
                     </>
                 }
             </Main>
