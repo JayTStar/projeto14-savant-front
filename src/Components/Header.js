@@ -1,14 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
+
+import { useToken, useUser, useCart } from "../contexts/UserContext";
+
 import SavantLogo from "../Midia/Savant-logo.svg";
 import Menu from "./Menu";
-import { useToken, useUser } from "./Context";
-import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-    const [menu, setMenu]  = useState(false);
+    const [menu, setMenu] = useState(false);
     const {token} = useToken();
     const {userInfo} = useUser();
+    const {cart} = useCart();
 
     const nav = useNavigate();
 
@@ -26,12 +29,12 @@ export default function Header() {
             <Menu menu={menu} setMenu={setMenu} />
             <Top>
                 <ion-icon onClick={() => setMenu(true)} name="menu-outline"></ion-icon>
-                <Logo src={SavantLogo}></Logo>
+                <Logo src={SavantLogo} onClick={() => {nav("/")}}></Logo>
                 <Right>
                     <ion-icon name="person-circle-outline" onClick={handleClick}></ion-icon>
                     <Cart>
-                        <ion-icon name="cart-outline"></ion-icon>
-                        <p>2</p>
+                        <ion-icon name="cart-outline" onClick={() => {nav("/cart")}}></ion-icon>
+                        <p>{cart.length}</p>
                     </Cart>
                 </Right>
             </Top>
@@ -52,7 +55,7 @@ const Head = styled.header`
 `
 const Top = styled.div`
     width: 100%;
-    height: 70%;
+    height: 50px;
     background-color: #064973;
     
     display: flex;
@@ -69,7 +72,7 @@ const Top = styled.div`
     }
 `
 const Logo = styled.img`
-    width: 30%;
+    width: 150px;
     height: auto;
 `
 const Right = styled.div`
@@ -102,13 +105,15 @@ const Cart = styled.div`
 `
 const Search = styled.div`
     width: 100%;
-    height: 30%;
+    height: 30px;
 
     background-color: #C4C4C4;
 
     display: flex;
     align-items: center;
     justify-content: space-around;
+
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.4);
 
     ion-icon{
         font-size: 25px;
@@ -117,5 +122,5 @@ const Search = styled.div`
 `
 const SearchBar = styled.input`
     width: 80%;
-    height: 50%;
+    height: 60%;
 `

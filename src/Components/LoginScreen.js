@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SavantLogo from "../Midia/Savant-logo.png";
 import axios from "axios";
-import { useUser, useToken } from "./Context";
+import { useUser, useToken } from "../contexts/UserContext";
 
 export default function Login(){
     const [email, setEmail] = useState("");

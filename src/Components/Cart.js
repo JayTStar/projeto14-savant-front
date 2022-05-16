@@ -1,18 +1,35 @@
 import styled from "styled-components";
-import { useCart } from "./Context";
+import { useCart } from "../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Cart(){
     let total = 0;
-    const {cart} = useCart();
+    const {cart, setCart} = useCart();
+    const [myCart, setMyCart] = useState([]);
+
+    const nav = useNavigate();
+
+    useEffect(() => {
+        setMyCart(cart)
+    },[cart])
+
+    function deleteItem(index){
+        console.log(myCart);
+        const deletedItem = myCart.splice(index, 1);
+        console.log(myCart);
+
+        setCart([...myCart]);
+    }
 
     return(
         <Page>
             <Top>
-                <ion-icon name="close-circle-outline"></ion-icon>
+                <ion-icon name="close-circle-outline" onClick={() => {nav("/")}}></ion-icon>
                 <p>Carrinho</p>
             </Top>
             <Items>
-                {cart.map( product =>{
+                {cart.map( (product, index) =>{
                     total += parseFloat(product.price);
                     return(
                         <Product>
@@ -21,13 +38,13 @@ export default function Cart(){
                                 <Title>{product.title}</Title>
                                 <Price>R${product.price}</Price>
                             </div>
-                            <ion-icon name="trash-outline"></ion-icon>
+                            <ion-icon name="trash-outline" onClick={() => {deleteItem(index)}}></ion-icon>
                         </Product>
                     )
                 })}
             </Items>
-            <Total> <p>Total:</p> <p>{total}</p></Total>
-            <button>Finalizar Compra</button>
+            <Total> <p>Total:</p> <p>R$:{parseFloat(total).toFixed(2).replace(".", ",")}</p></Total>
+            <button onClick={() => {nav("/checkout")}}>Finalizar Compra</button>
         </Page>
     )
 }
@@ -38,11 +55,10 @@ const Page = styled.main`
 
     display: flex;
     flex-direction: column;
-    align-items: center;
 
     button{
         width: 50%;
-        height: 7%;
+        height: 50px;
         background: #49728C;
         border: none;
 
@@ -52,12 +68,12 @@ const Page = styled.main`
 
         color: #C4C4C4;
 
-        margin: 20px;
+        margin: 20px auto;
     }
 `
 const Top = styled.header`
     width: 100%;
-    height: 10%;
+    height: 70px;
     background-color: #064973;
 
     display: flex;
@@ -81,14 +97,19 @@ const Top = styled.header`
     }
 `
 const Items = styled.ul`
-    width:100%;
-    height: 70%;
+    width: 95%;
+    height: 450px;
 
     overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 5px auto;
 `
 const Product = styled.div`
-    width:100%;
-    height: 20%;
+    width: 90%;
+    height: 70px;
 
     display:flex;
     align-items: center;
@@ -97,13 +118,13 @@ const Product = styled.div`
     border-radius: 10px;
 
     box-sizing: border-box;
-    margin: 5px 0;
+    margin: 5px auto;
     padding: 0 10px;
 
     position: relative;
 
     ion-icon{
-        color: red;
+        color: #064973;
 
         font-size: 20px;
 
@@ -113,11 +134,7 @@ const Product = styled.div`
     div{
         width: 60%;
         height: 90%;
-
-        display:flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
+        margin: 5px;
     }
 `
 const Img = styled.img`
@@ -125,10 +142,15 @@ const Img = styled.img`
     height: 90%;
 `
 const Title = styled.p`
+    width: 100%;
 
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+
+    margin: 5px 0;
 `
 const Price = styled.p`
-
+    margin: 5px 0;
 `
 const Total = styled.div`
     width: 100%;
@@ -142,4 +164,6 @@ const Total = styled.div`
     font-size: 20px;
 
     margin: 10px 0;
+
+    color: #064973;
 `
