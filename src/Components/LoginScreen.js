@@ -23,7 +23,7 @@ export default function Login(){
         try{
             const req = await axios.post("https://savant-e-commerce.herokuapp.com/sign-in", loginInfo);
 
-            const {token, userId, userName} = req;
+            const {token, userId, userName} = req.data;
 
             setToken(token);
 
