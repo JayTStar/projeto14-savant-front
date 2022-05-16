@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { Instagram } from "react-content-loader";
 import axios from "axios";
 import styledComponents from "styled-components";
 
@@ -28,7 +29,7 @@ export default function HomePage() {
             <Header />
             <Main>
                 {productsLists.length === 0 ?
-                    <p>Carregando...</p>
+                    <Instagram />
                     :
                     <>
                         {genres.map((genre, index) => {
@@ -48,5 +49,5 @@ const Section = styledComponents.section`
 `;
 
 const Main = styledComponents.main`
-    margin-top: calc(var(--header-height) + 12%);
+    margin: calc(var(--header-height) + 12%) 10px 0 10px;
 `;

@@ -1,10 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import styledComponents from "styled-components";
 
-export default function Product({product}) {
-    const { image, title, price, author } = product;
+export default function Product({ product }) {
+    const { image, title, price, author, _id } = product;
+    let { productId } = product;
+    const navigate = useNavigate();
+    
+    if (!productId) {
+        productId = _id;
+    }
 
     return (
-        <Item>
+        <Item onClick={() => navigate(`/${productId}`)}>
             <Image src={image} />
             <Title>{title}</Title>
             <Author>{author}</Author>
@@ -21,7 +28,7 @@ const Item = styledComponents.article`
     flex-direction: column;
     width: 150px;
     height: 300px;
-    margin: 10px 15px 10px 0;
+    margin: 5px;
     padding: 10px;
     border-radius: 10px;
     box-shadow: -2px 2px 3px 1px rgba(0, 0, 0, 0.2);
