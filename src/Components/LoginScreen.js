@@ -14,7 +14,6 @@ export default function Login(){
     const {setToken} = useToken();
     const {setUserInfo} = useUser();
 
-
     const loginInfo = {
         email: email,
         password: password
@@ -42,7 +41,7 @@ export default function Login(){
 
     return(
         <Page>
-            <Logo src={SavantLogo}></Logo>
+            <Logo onClick={() => {nav("/")}} src={SavantLogo}></Logo>
             <Form>
                 <Email placeholder="E-mail" onChange={(e) => {setEmail(e.target.value)}}></Email>
                 <Password placeholder="Senha" onChange={(e) => {setPassword(e.target.value)}}></Password>

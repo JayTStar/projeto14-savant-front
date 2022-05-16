@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useCart } from "../contexts/UserContext";
+import { useCart, useToken } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -7,7 +7,7 @@ export default function Cart(){
     let total = 0;
     const {cart, setCart} = useCart();
     const [myCart, setMyCart] = useState([]);
-
+    const {token} = useToken();
     const nav = useNavigate();
 
     useEffect(() => {
@@ -20,6 +20,14 @@ export default function Cart(){
         console.log(myCart);
 
         setCart([...myCart]);
+    }
+
+    function checkSession(){
+        if(token){
+            nav("/checkout");
+        }else{
+            nav("/login");
+        }
     }
 
     return(
@@ -44,7 +52,7 @@ export default function Cart(){
                 })}
             </Items>
             <Total> <p>Total:</p> <p>R$ {parseFloat(total).toFixed(2).replace(".", ",")}</p></Total>
-            <button onClick={() => {nav("/checkout")}}>Finalizar Compra</button>
+            <button onClick={checkSession}>Finalizar Compra</button>
         </Page>
     )
 }

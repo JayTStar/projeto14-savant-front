@@ -49,5 +49,5 @@ const Section = styledComponents.section`
 `;
 
 const Main = styledComponents.main`
-    margin: calc(var(--header-height) + 12%) 10px 0 10px;
+    margin: calc(var(--header-height) + 18%) 10px 0 10px;
 `;

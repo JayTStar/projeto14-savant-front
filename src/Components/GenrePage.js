@@ -55,7 +55,7 @@ const Main = styledComponents.main`
     display: flex;
     flex-direction: column;
     width: 100vw;
-    margin: var(--header-height) 0 10px 0;
+    margin: calc(var(--header-height) + 8%) 0 10px 0;
 `;
 
 const List = styledComponents.div`

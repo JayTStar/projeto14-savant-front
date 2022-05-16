@@ -77,7 +77,7 @@ const Top = styled.div`
     justify-content: space-between;
 
     box-sizing: border-box;
-    padding: 5%;
+    padding: 9% 5%;
 
     ion-icon{
         font-size: 30px;

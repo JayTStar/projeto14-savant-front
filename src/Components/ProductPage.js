@@ -58,7 +58,7 @@ const Section = styledComponents.section`
 const Main = styledComponents.main`
     display: flex;
     flex-direction: column;
-    margin-top: calc(var(--header-height) + 12%);
+    margin-top: calc(var(--header-height) + 20%);
     padding: 0 5%;
 `;
 

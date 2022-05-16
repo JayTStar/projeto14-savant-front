@@ -42,7 +42,7 @@ export default function Signup(){
 
     return(
         <Page>
-            <Logo src={SavantLogo}></Logo>
+            <Logo onClick={() => {nav("/")}} src={SavantLogo}></Logo>
             <Form>
                 <FirstName placeholder="Nome" onChange={(e) => {setFirstName(e.target.value)}}></FirstName>
                 <LastName placeholder="Sobrenome" onChange={(e) => {setLastName(e.target.value)}}></LastName>
