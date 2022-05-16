@@ -135,16 +135,17 @@ export default function Checkout(){
                     <input placeholder="Vencimento" onChange={(e) => {setValid(e.target.value)}}/>
                     <input placeholder="CVV" onChange={(e) => {setCVV(e.target.value)}}/>
                     <select onChange={(e) => {setInstallment(e.target.value)}}>
-                        <option value={(totalPrice).toFixed(2)}>1X de {(totalPrice).toFixed(2)}</option>
-                        <option value={(totalPrice/2).toFixed(2)}>2X de {(totalPrice/2).toFixed(2)}</option>
-                        <option value={(totalPrice/3).toFixed(2)}>3X de {(totalPrice/3).toFixed(2)}</option>
-                        <option value={(totalPrice/4).toFixed(2)}>4X de {(totalPrice/4).toFixed(2)}</option>
-                        <option value={(totalPrice/5).toFixed(2)}>5X de {(totalPrice/5).toFixed(2)}</option>
-                        <option value={(totalPrice/6).toFixed(2)}>6X de {(totalPrice/6).toFixed(2)}</option>
-                        <option value={(totalPrice/7).toFixed(2)}>7X de {(totalPrice/7).toFixed(2)}</option>
-                        <option value={(totalPrice/8).toFixed(2)}>8X de {(totalPrice/8).toFixed(2)}</option>
-                        <option value={(totalPrice/9).toFixed(2)}>9X de {(totalPrice/9).toFixed(2)}</option>
-                        <option value={(totalPrice/10).toFixed(2)}>10X de {(totalPrice/10).toFixed(2)}</option>
+                        <option>Selecione o número de parcelas</option>
+                        <option value={`1X de ${(totalPrice).toFixed(2)}`}>1X de {(totalPrice).toFixed(2)}</option>
+                        <option value={`2X de ${(totalPrice/2).toFixed(2)}`}>2X de {(totalPrice/2).toFixed(2)}</option>
+                        <option value={`3X de ${(totalPrice/3).toFixed(2)}`}>3X de {(totalPrice/3).toFixed(2)}</option>
+                        <option value={`4X de ${(totalPrice/4).toFixed(2)}`}>4X de {(totalPrice/4).toFixed(2)}</option>
+                        <option value={`5X de ${(totalPrice/5).toFixed(2)}`}>5X de {(totalPrice/5).toFixed(2)}</option>
+                        <option value={`6X de ${(totalPrice/6).toFixed(2)}`}>6X de {(totalPrice/6).toFixed(2)}</option>
+                        <option value={`7X de ${(totalPrice/7).toFixed(2)}`}>7X de {(totalPrice/7).toFixed(2)}</option>
+                        <option value={`8X de ${(totalPrice/8).toFixed(2)}`}>8X de {(totalPrice/8).toFixed(2)}</option>
+                        <option value={`9X de ${(totalPrice/9).toFixed(2)}`}>9X de {(totalPrice/9).toFixed(2)}</option>
+                        <option value={`10X de ${(totalPrice/10).toFixed(2)}`}>10X de {(totalPrice/10).toFixed(2)}</option>
                     </select>
                 </form>
             </Payment>
