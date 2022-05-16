@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import SavantLogo from "../Midia/Savant-logo.svg";
 import Menu from "./Menu";
-import { useToken, useUser } from "../contexts/UserContext";
+import { useToken, useUser, useCart } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {

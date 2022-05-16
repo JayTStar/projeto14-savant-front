@@ -1,18 +1,35 @@
 import styled from "styled-components";
-import { useCart } from "./Context";
+import { useCart } from "../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Cart(){
     let total = 0;
-    const {cart} = useCart();
+    const {cart, setCart} = useCart();
+    const [myCart, setMyCart] = useState([]);
+
+    const nav = useNavigate();
+
+    useEffect(() => {
+        setMyCart(cart)
+    },[cart])
+
+    function deleteItem(index){
+        console.log(myCart);
+        const deletedItem = myCart.splice(index, 1);
+        console.log(myCart);
+
+        setCart(myCart);
+    }
 
     return(
         <Page>
             <Top>
-                <ion-icon name="close-circle-outline"></ion-icon>
+                <ion-icon name="close-circle-outline" onClick={() => {nav("/")}}></ion-icon>
                 <p>Carrinho</p>
             </Top>
             <Items>
-                {cart.map( product =>{
+                {cart.map( (product, index) =>{
                     total += parseFloat(product.price);
                     return(
                         <Product>
@@ -21,12 +38,12 @@ export default function Cart(){
                                 <Title>{product.title}</Title>
                                 <Price>R${product.price}</Price>
                             </div>
-                            <ion-icon name="trash-outline"></ion-icon>
+                            <ion-icon name="trash-outline" onClick={() => {deleteItem(index)}}></ion-icon>
                         </Product>
                     )
                 })}
             </Items>
-            <Total> <p>Total:</p> <p>{total}</p></Total>
+            <Total> <p>Total:</p> <p>R$:{parseFloat(total).toFixed(2).replace(".", ",")}</p></Total>
             <button>Finalizar Compra</button>
         </Page>
     )
@@ -53,7 +70,7 @@ const Page = styled.main`
 `
 const Top = styled.header`
     width: 100%;
-    height: 10%;
+    height: 70px;
     background-color: #064973;
 
     display: flex;
@@ -78,13 +95,13 @@ const Top = styled.header`
 `
 const Items = styled.ul`
     width:100%;
-    height: 70%;
+    height: 500px;
 
     overflow-y: scroll;
 `
 const Product = styled.div`
     width:100%;
-    height: 20%;
+    height: 70px;
 
     display:flex;
     align-items: center;
@@ -99,7 +116,7 @@ const Product = styled.div`
     position: relative;
 
     ion-icon{
-        color: red;
+        color: #064973;
 
         font-size: 20px;
 
