@@ -69,6 +69,8 @@ export default function Checkout(){
         }
         catch(err){
             console.log(err);
+
+            alert("Erro ao realizar a compra");
         }
     }
 
