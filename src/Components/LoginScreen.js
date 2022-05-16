@@ -5,25 +5,28 @@ import SavantLogo from "../Midia/Savant-logo.png";
 import axios from "axios";
 import { useUser, useToken } from "../contexts/UserContext";
 
-export default function Login(){
+export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const nav = useNavigate();
 
-    const {setToken} = useToken();
-    const {setUserInfo} = useUser();
+    const { setToken } = useToken();
+    const { setUserInfo } = useUser();
 
     const loginInfo = {
         email: email,
         password: password
     }
 
-    async function handleClick(){
-        try{
+    async function handleClick() {
+        try {
             const req = await axios.post("https://savant-e-commerce.herokuapp.com/sign-in", loginInfo);
 
-            const {token, userId, userName} = req;
+            console.log(req)
+            const { token, userId, userName } = req.data;
+
+            setInterval(() => uspdateStatus(token, userId), 5000);
 
             setToken(token);
 
@@ -32,22 +35,31 @@ export default function Login(){
                 name: userName
             })
 
+
             nav("/");
         }
-        catch(err){
+        catch (err) {
             console.log(err);
         }
     }
 
-    return(
+    function uspdateStatus(token, userId) {
+        axios.post("http://localhost:5000/status", { userId }, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
+    }
+
+    return (
         <Page>
-            <Logo onClick={() => {nav("/")}} src={SavantLogo}></Logo>
+            <Logo onClick={() => { nav("/") }} src={SavantLogo}></Logo>
             <Form>
-                <Email placeholder="E-mail" onChange={(e) => {setEmail(e.target.value)}}></Email>
-                <Password placeholder="Senha" onChange={(e) => {setPassword(e.target.value)}}></Password>
+                <Email placeholder="E-mail" onChange={(e) => { setEmail(e.target.value) }}></Email>
+                <Password placeholder="Senha" onChange={(e) => { setPassword(e.target.value) }}></Password>
             </Form>
             <Button onClick={handleClick}>Login</Button>
-            <Signup to={{pathname:"/sign-up"}}>Não tem conta? Cadastre-se aqui</Signup>
+            <Signup to={{ pathname: "/sign-up" }}>Não tem conta? Cadastre-se aqui</Signup>
         </Page>
     )
 }
