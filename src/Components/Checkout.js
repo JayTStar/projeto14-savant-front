@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Logo from "../Midia/Savant-logo.svg"
 import {useState} from "react"
 import { useCart, useUser } from "../contexts/UserContext";
+import axios from "axios";
 
 export default function Checkout(){
     const [firstName, setFirstName] = useState("");
@@ -25,14 +26,14 @@ export default function Checkout(){
     const lastFour = cardNumber.substr(cardNumber.length - 4);
 
     const {cart} = useCart();
-    const {user} = useUser();
+    const {userInfo} = useUser();
 
     let totalPrice = 0;
 
     cart.map(product => {totalPrice += parseFloat(product.price)});
 
     const orderInfo ={
-        userID: user.id,
+        userID: userInfo.id,
         items: cart,
         total: totalPrice,
         deliverTo: `${firstName} ${lastName}`,
@@ -50,8 +51,17 @@ export default function Checkout(){
         installment: installment
     }
 
-    function postOrder(){
+    async function postOrder(){
         console.log(orderInfo);
+
+        try{
+            const req = await axios.post("http://localhost:5000/orders", orderInfo);
+
+            console.log(req);
+        }
+        catch(err){
+            console.log(err);
+        }
     }
 
     return(
