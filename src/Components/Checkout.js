@@ -3,6 +3,7 @@ import Logo from "../Midia/Savant-logo.svg"
 import {useState} from "react"
 import { useCart, useUser } from "../contexts/UserContext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Checkout(){
     const URL = "https://savant-e-commerce.herokuapp.com/orders"
@@ -29,6 +30,7 @@ export default function Checkout(){
 
     const {cart} = useCart();
     const {userInfo} = useUser();
+    const nav = useNavigate();
 
     let totalPrice = 0;
 
