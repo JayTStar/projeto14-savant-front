@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Instagram } from "react-content-loader";
 import axios from "axios";
 import styledComponents from "styled-components";
 
@@ -24,7 +25,7 @@ export default function ProductPage() {
             <Header />
             <Main>
                 {!product ?
-                    <p>Carregando...</p>
+                    <Instagram />
                     :
                     <>
                         <Poster>

@@ -28,7 +28,7 @@ const Item = styledComponents.article`
     flex-direction: column;
     width: 150px;
     height: 300px;
-    margin: 10px 15px 10px 0;
+    margin: 5px;
     padding: 10px;
     border-radius: 10px;
     box-shadow: -2px 2px 3px 1px rgba(0, 0, 0, 0.2);
