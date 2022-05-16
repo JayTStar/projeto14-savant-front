@@ -36,7 +36,7 @@ const List = styledComponents.div`
     width: 100%;
     height: 350px;
     display: flex;
-    padding: 0 5%;
+    padding: 0 4%;
 `;
 
 const Partition = styledComponents.div`
