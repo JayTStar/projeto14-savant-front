@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
 
 import { useToken, useUser, useCart } from "../contexts/UserContext";
 
@@ -61,6 +60,7 @@ const Top = styled.div`
 
     box-sizing: border-box;
     padding: 9% 5%;
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.4);
 
     ion-icon{
         font-size: 30px;

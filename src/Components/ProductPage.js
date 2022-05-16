@@ -22,8 +22,6 @@ export default function ProductPage() {
         promise.catch((e) => console.log(e));
     }, []);
 
-    console.log(product)
-
     function addCart(product){
         setCart([...cart, product])
 

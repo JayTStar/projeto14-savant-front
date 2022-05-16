@@ -23,7 +23,7 @@ export default function Login() {
         try {
             const req = await axios.post("https://savant-e-commerce.herokuapp.com/sign-in", loginInfo);
             const { token, userId, userName } = req.data;
-
+            
             setInterval(() => uspdateStatus(token, userId), 5000);
 
             setToken(token);
@@ -36,9 +36,7 @@ export default function Login() {
             nav("/");
         }
         catch (err) {
-            console.log(err);
-
-            if(err.status === 401 || err.status === 422){
+            if(err.response.status === 401 || err.response.status === 422){
                 alert("Usuário ou senha errados");
             }
         }
