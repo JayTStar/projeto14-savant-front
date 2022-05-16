@@ -43,8 +43,8 @@ export default function Login(){
         <Page>
             <Logo onClick={() => {nav("/")}} src={SavantLogo}></Logo>
             <Form>
-                <Email placeholder="E-mail" onChange={(e) => {setEmail(e.target.value)}}></Email>
-                <Password placeholder="Senha" onChange={(e) => {setPassword(e.target.value)}}></Password>
+                <Email type="email" placeholder="E-mail" onChange={(e) => {setEmail(e.target.value)}}></Email>
+                <Password type="password" placeholder="Senha" onChange={(e) => {setPassword(e.target.value)}}></Password>
             </Form>
             <Button onClick={handleClick}>Login</Button>
             <Signup to={{pathname:"/sign-up"}}>Não tem conta? Cadastre-se aqui</Signup>

@@ -25,14 +25,14 @@ export default function Checkout(){
     const lastFour = cardNumber.substr(cardNumber.length - 4);
 
     const {cart} = useCart();
-    const {user} = useUser();
+    const {userInfo} = useUser();
 
     let totalPrice = 0;
 
     cart.map(product => {totalPrice += parseFloat(product.price)});
 
     const orderInfo ={
-        userID: user.id,
+        userID: userInfo.id,
         items: cart,
         total: totalPrice,
         deliverTo: `${firstName} ${lastName}`,
