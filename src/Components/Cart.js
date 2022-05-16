@@ -44,7 +44,7 @@ export default function Cart(){
                 })}
             </Items>
             <Total> <p>Total:</p> <p>R$:{parseFloat(total).toFixed(2).replace(".", ",")}</p></Total>
-            <button>Finalizar Compra</button>
+            <button onClick={() => {nav("/checkout")}}>Finalizar Compra</button>
         </Page>
     )
 }
@@ -53,9 +53,12 @@ const Page = styled.main`
     width:100%;
     height: 100%;
 
+    display: flex;
+    flex-direction: column;
+
     button{
         width: 50%;
-        height: 7%;
+        height: 50px;
         background: #49728C;
         border: none;
 
@@ -65,7 +68,7 @@ const Page = styled.main`
 
         color: #C4C4C4;
 
-        margin: 20px;
+        margin: 20px auto;
     }
 `
 const Top = styled.header`
@@ -94,14 +97,18 @@ const Top = styled.header`
     }
 `
 const Items = styled.ul`
-    width:100%;
-    height: 500px;
+    width: 95%;
+    height: 450px;
 
     overflow-y: scroll;
 
+    display: flex;
+    flex-direction: column;
+
+    margin: 5px auto;
 `
 const Product = styled.div`
-    width:100%;
+    width: 90%;
     height: 70px;
 
     display:flex;
@@ -111,7 +118,7 @@ const Product = styled.div`
     border-radius: 10px;
 
     box-sizing: border-box;
-    margin: 5px 0;
+    margin: 5px auto;
     padding: 0 10px;
 
     position: relative;
@@ -127,11 +134,7 @@ const Product = styled.div`
     div{
         width: 60%;
         height: 90%;
-
-        display:flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
+        margin: 5px;
     }
 `
 const Img = styled.img`
@@ -139,10 +142,15 @@ const Img = styled.img`
     height: 90%;
 `
 const Title = styled.p`
+    width: 100%;
 
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+
+    margin: 5px 0;
 `
 const Price = styled.p`
-
+    margin: 5px 0;
 `
 const Total = styled.div`
     width: 100%;
@@ -156,4 +164,6 @@ const Total = styled.div`
     font-size: 20px;
 
     margin: 10px 0;
+
+    color: #064973;
 `

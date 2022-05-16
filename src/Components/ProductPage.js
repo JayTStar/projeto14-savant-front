@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Instagram } from "react-content-loader";
 import axios from "axios";
 import styledComponents from "styled-components";
+import { useCart } from "../contexts/UserContext";
 
 import Header from "./Header";
 
@@ -12,6 +13,8 @@ export default function ProductPage() {
     const [product, setProduct] = useState(null);
     const navigate = useNavigate();
 
+    const{cart, setCart} = useCart();
+
     useEffect(() => {
         const promise = axios.get(URL);
         promise.then((response) => setProduct(response.data));
@@ -19,6 +22,10 @@ export default function ProductPage() {
     }, []);
 
     console.log(product)
+
+    function addCart(product){
+        setCart([...cart, product])
+    }
 
     return (
         <Section>
@@ -36,7 +43,7 @@ export default function ProductPage() {
                         <Author>{`Autor: ${product.author}`}</Author>
                         <Price>{`R$ ${product.price}`}</Price>
                         <Synopsis>{`Sinopse: ${product.synopsis}`}</Synopsis>
-                        <Button>Adicionar ao carrinho</Button>
+                        <Button onClick={() => {addCart(product)}}>Adicionar ao carrinho</Button>
                     </>
                 }
             </Main>

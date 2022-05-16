@@ -22,7 +22,6 @@ export default function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/sign-up" element={<Signup />} />
-                    <Route path="/" element={<HomePage />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/:productId" element={<ProductPage />} />
                     {genres.map((genre, index) => {
